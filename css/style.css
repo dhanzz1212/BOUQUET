@@ -1,0 +1,1340 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    background: #f8eee9;
+    color: #302522;
+    overflow-x: hidden;
+}
+
+img {
+    width: 100%;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+}
+
+
+/* =========================
+   OPENING
+========================= */
+
+.opening {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: #111418;
+    overflow: hidden;
+    transition: opacity .9s ease, visibility .9s ease;
+}
+
+.opening.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.opening-bg {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255, 236, 214, .14),
+            transparent 34%
+        ),
+        linear-gradient(
+            180deg,
+            #171a1d 0%,
+            #111418 48%,
+            #a48b7e 130%
+        );
+}
+
+.opening-circle {
+    position: relative;
+    width: min(65vw, 475px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background:
+        radial-gradient(
+            circle at 30% 20%,
+            #fffdf5,
+            #f6eddb 55%,
+            #e8dac4 100%
+        );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.25),
+        inset 0 0 50px rgba(255,255,255,.35);
+    animation: openingFloat 4s ease-in-out infinite;
+}
+
+.opening-logo {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(45px, 8vw, 90px);
+    font-style: italic;
+    color: #a68158;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.opening-circle h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(35px, 5vw, 58px);
+    font-weight: 400;
+    color: #241d1a;
+}
+
+.opening-circle p {
+    margin-top: 8px;
+    font-size: clamp(9px, 1.3vw, 13px);
+    letter-spacing: .08em;
+    color: #6e625b;
+}
+
+.enter-button {
+    position: relative;
+    margin-top: 38px;
+    border: 1px solid rgba(255,255,255,.45);
+    background: rgba(255,255,255,.08);
+    color: #fff;
+    padding: 14px 25px;
+    border-radius: 100px;
+    letter-spacing: .2em;
+    font-size: 10px;
+    cursor: pointer;
+    backdrop-filter: blur(12px);
+    transition: .3s ease;
+}
+
+.enter-button span {
+    margin-left: 10px;
+}
+
+.enter-button:hover {
+    background: #fff;
+    color: #2c2522;
+    transform: translateY(-3px);
+}
+
+@keyframes openingFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+
+/* =========================
+   WEBSITE
+========================= */
+
+#website {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease;
+}
+
+#website.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+    padding: 28px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+}
+
+.brand {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-main {
+    font-family: "Playfair Display", serif;
+    font-size: 26px;
+    letter-spacing: -.03em;
+}
+
+.brand-sub {
+    margin-top: 2px;
+    font-size: 8px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    opacity: .7;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 35px;
+}
+
+.nav-menu a {
+    font-size: 11px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    opacity: .85;
+    transition: .3s;
+}
+
+.nav-menu a:hover {
+    opacity: 1;
+}
+
+.nav-social {
+    display: flex;
+    gap: 8px;
+}
+
+.nav-social a {
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(255,255,255,.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    transition: .3s;
+}
+
+.nav-social a:hover {
+    background: #fff;
+    color: #302522;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 120px 8%;
+    color: #fff;
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            rgba(40,30,28,.25),
+            rgba(40,30,28,.25)
+        ),
+        url("../img/hero.jpg") center/cover no-repeat;
+    transform: scale(1.02);
+}
+
+.hero-shade {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(20,16,15,.75),
+            rgba(20,16,15,.2),
+            rgba(20,16,15,.15)
+        );
+}
+
+.hero-content {
+    position: relative;
+    max-width: 720px;
+    z-index: 2;
+}
+
+.hero-small {
+    font-size: 10px;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    opacity: .8;
+}
+
+.hero h1 {
+    margin-top: 22px;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(55px, 8vw, 105px);
+    line-height: .95;
+    font-weight: 400;
+    letter-spacing: -.05em;
+}
+
+.hero h1 i {
+    color: #e2b5b2;
+}
+
+.hero-content p {
+    max-width: 450px;
+    margin-top: 30px;
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(255,255,255,.8);
+}
+
+.hero-actions {
+    margin-top: 35px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.button-primary {
+    background: #fff;
+    color: #302522;
+    padding: 15px 22px;
+    font-size: 11px;
+    letter-spacing: .08em;
+    transition: .3s;
+}
+
+.button-primary span {
+    margin-left: 15px;
+}
+
+.button-primary:hover {
+    transform: translateY(-3px);
+}
+
+.button-link {
+    font-size: 11px;
+    border-bottom: 1px solid rgba(255,255,255,.5);
+    padding-bottom: 5px;
+}
+
+.hero-label {
+    position: absolute;
+    bottom: 35px;
+    left: 8%;
+    right: 8%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 8px;
+    letter-spacing: .2em;
+    opacity: .7;
+}
+
+.hero-scroll {
+    position: absolute;
+    right: 4%;
+    bottom: 45px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transform: rotate(90deg);
+    transform-origin: right;
+}
+
+.hero-scroll span {
+    font-size: 8px;
+    letter-spacing: .2em;
+}
+
+.hero-scroll div {
+    width: 45px;
+    height: 1px;
+    background: #fff;
+}
+
+
+/* =========================
+   GENERAL
+========================= */
+
+.section-label {
+    display: inline-block;
+    font-size: 9px;
+    letter-spacing: .25em;
+    color: #a96f70;
+}
+
+.intro {
+    display: grid;
+    grid-template-columns: 100px 1fr 250px;
+    gap: 50px;
+    padding: 150px 9%;
+    background: #f8eee9;
+}
+
+.intro-number {
+    font-size: 10px;
+    letter-spacing: .15em;
+    color: #a96f70;
+}
+
+.intro-main {
+    max-width: 750px;
+}
+
+.intro h2,
+.section-head h2,
+.collection-top h2,
+.message-inner h2,
+.story-content h2,
+.social-title h2,
+.order-content h2 {
+    font-family: "Playfair Display", serif;
+    font-weight: 400;
+    font-size: clamp(45px, 5vw, 75px);
+    line-height: 1;
+    letter-spacing: -.04em;
+}
+
+.intro h2 i,
+.section-head h2 i,
+.collection-top h2 i,
+.message-inner h2 i,
+.story-content h2 i,
+.social-title h2 i,
+.order-content h2 i {
+    color: #a96f70;
+}
+
+.intro-main p {
+    max-width: 620px;
+    margin-top: 30px;
+    font-size: 15px;
+    line-height: 1.9;
+    color: #806f6b;
+}
+
+.intro-side {
+    align-self: end;
+}
+
+.intro-side span {
+    font-family: "Playfair Display", serif;
+    font-size: 70px;
+    color: #d8aaa8;
+}
+
+.intro-side p {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: 19px;
+    line-height: 1.4;
+}
+
+
+/* =========================
+   MOMENT
+========================= */
+
+.moment-section {
+    padding: 120px 7%;
+    background: #f1e2dc;
+}
+
+/* JUDUL DAN TEKS KANAN */
+.section-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 80px;
+    margin-bottom: 60px;
+}
+
+.section-head > div {
+    flex: 1;
+}
+
+.section-head h2 {
+    margin-top: 15px;
+}
+
+.section-head > p {
+    width: 300px;
+    flex-shrink: 0;
+    color: #806f6b;
+    font-size: 13px;
+    line-height: 1.8;
+    padding-bottom: 5px;
+}
+
+
+/* =========================
+   MOMENT GRID
+========================= */
+
+/* DULUNYA 4 KOLOM
+   SEKARANG 3 KOLOM
+   KARENA HANYA ADA 3 KARTU
+*/
+.moment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    width: 100%;
+}
+
+.moment-card {
+    position: relative;
+    display: block;
+    width: 100%;
+    background: #fffaf7;
+    overflow: hidden;
+    transition: .4s ease;
+}
+
+.moment-card:hover {
+    transform: translateY(-8px);
+}
+
+.moment-number {
+    position: absolute;
+    z-index: 3;
+    top: 18px;
+    left: 18px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+}
+
+.moment-image {
+    width: 100%;
+    height: 430px;
+    overflow: hidden;
+    background: #ead7d0;
+}
+
+.moment-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .6s;
+}
+
+.moment-card:hover .moment-image img {
+    transform: scale(1.05);
+}
+
+.moment-info {
+    min-height: 145px;
+    padding: 25px;
+    position: relative;
+}
+
+.moment-info span {
+    font-size: 8px;
+    letter-spacing: .2em;
+    color: #a96f70;
+}
+
+.moment-info h3 {
+    margin-top: 8px;
+    font-family: "Playfair Display", serif;
+    font-size: 27px;
+    font-weight: 400;
+}
+
+.moment-info p {
+    margin-top: 7px;
+    padding-right: 35px;
+    font-size: 11px;
+    color: #806f6b;
+}
+
+.moment-info b {
+    position: absolute;
+    right: 25px;
+    bottom: 25px;
+    font-size: 18px;
+}
+
+.moment-more {
+    text-align: center;
+    margin-top: 55px;
+}
+
+.moment-more a {
+    font-size: 10px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    border-bottom: 1px solid #a96f70;
+    padding-bottom: 8px;
+}
+
+.moment-more span {
+    margin-left: 12px;
+}
+
+
+/* =========================
+   COLLECTION
+========================= */
+
+.collection {
+    padding: 150px 7%;
+    background: #f8eee9;
+}
+
+.collection-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 50px;
+    margin-bottom: 70px;
+}
+
+.collection-top h2 {
+    margin-top: 15px;
+}
+
+.collection-top > p {
+    max-width: 320px;
+    color: #806f6b;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 70px 25px;
+}
+
+.product-photo {
+    position: relative;
+    height: 600px;
+    overflow: hidden;
+    background: #ead7d0;
+}
+
+.product:nth-child(even) .product-photo {
+    height: 500px;
+}
+
+.product-photo img {
+    height: 100%;
+    object-fit: cover;
+    transition: .7s;
+}
+
+.product:hover .product-photo img {
+    transform: scale(1.04);
+}
+
+.product-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: #fffaf7;
+    padding: 9px 13px;
+    font-size: 8px;
+    letter-spacing: .15em;
+}
+
+.product-hover {
+    position: absolute;
+    inset: auto 20px 20px auto;
+    background: #302522;
+    color: #fff;
+    padding: 12px 15px;
+    font-size: 8px;
+    letter-spacing: .15em;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: .3s;
+}
+
+.product:hover .product-hover {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.product-detail {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    padding-top: 20px;
+}
+
+.product-detail span {
+    font-size: 8px;
+    letter-spacing: .2em;
+    color: #a96f70;
+}
+
+.product-detail h3 {
+    margin-top: 8px;
+    font-family: "Playfair Display", serif;
+    font-weight: 400;
+    font-size: 29px;
+}
+
+.product-detail strong {
+    font-family: "Playfair Display", serif;
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.product > p {
+    margin-top: 10px;
+    max-width: 400px;
+    font-size: 11px;
+    line-height: 1.7;
+    color: #806f6b;
+}
+
+
+/* =========================
+   SPECIAL
+========================= */
+
+.special {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #e3c9c4;
+}
+
+.special-image {
+    min-height: 700px;
+}
+
+.special-image img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.special-content {
+    padding: 100px 9%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.special-content h2 {
+    margin-top: 25px;
+    font-family: "Playfair Display", serif;
+    font-weight: 400;
+    font-size: clamp(50px, 5vw, 75px);
+    line-height: .98;
+}
+
+.special-content h2 i {
+    color: #a96f70;
+}
+
+.special-content p {
+    margin-top: 30px;
+    max-width: 450px;
+    color: #665451;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.special-price {
+    margin-top: 30px;
+}
+
+.special-price span {
+    display: block;
+    font-size: 8px;
+    letter-spacing: .2em;
+    color: #806f6b;
+}
+
+.special-price strong {
+    display: block;
+    margin-top: 5px;
+    font-family: "Playfair Display", serif;
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.button-dark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 200px;
+    margin-top: 35px;
+    padding: 15px 18px;
+    background: #302522;
+    color: #fff;
+    font-size: 10px;
+    letter-spacing: .08em;
+}
+
+.button-dark span {
+    font-size: 16px;
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message-section {
+    padding: 150px 7%;
+    background: #302522;
+    color: #fff;
+}
+
+.message-inner {
+    max-width: 1000px;
+    margin: auto;
+    text-align: center;
+}
+
+.message-inner .section-label {
+    color: #d8aaa8;
+}
+
+.message-inner h2 {
+    margin-top: 18px;
+}
+
+.message-inner > p {
+    max-width: 500px;
+    margin: 30px auto 60px;
+    color: rgba(255,255,255,.65);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.message-card {
+    max-width: 700px;
+    margin: auto;
+    padding: 30px 35px;
+    border: 1px solid rgba(255,255,255,.15);
+    background: rgba(255,255,255,.04);
+}
+
+.message-top,
+.message-bottom {
+    display: flex;
+    justify-content: space-between;
+    font-size: 8px;
+    letter-spacing: .2em;
+    color: #bfa8a3;
+}
+
+.message-text {
+    padding: 70px 20px;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(24px, 3vw, 35px);
+    line-height: 1.4;
+}
+
+.message-bottom strong {
+    color: #d8aaa8;
+}
+
+
+/* =========================
+   STORY
+========================= */
+
+.story {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #f8eee9;
+}
+
+.story-image {
+    min-height: 650px;
+}
+
+.story-image img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.story-content {
+    padding: 100px 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.story-content h2 {
+    margin-top: 20px;
+}
+
+.story-content p {
+    max-width: 480px;
+    margin-top: 25px;
+    color: #806f6b;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.story-signature {
+    margin-top: 45px;
+    display: flex;
+    flex-direction: column;
+}
+
+.story-signature span {
+    font-family: "Playfair Display", serif;
+    font-size: 25px;
+}
+
+.story-signature small {
+    margin-top: 4px;
+    font-size: 8px;
+    letter-spacing: .12em;
+    color: #a96f70;
+}
+
+
+/* =========================
+   SOCIAL
+========================= */
+
+.social-section {
+    padding: 150px 6%;
+    background: #f1e2dc;
+    text-align: center;
+    overflow: hidden;
+}
+
+.social-title h2 {
+    margin-top: 15px;
+}
+
+.social-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 70px;
+}
+
+.social-grid div {
+    aspect-ratio: 1;
+    overflow: hidden;
+}
+
+.social-grid img {
+    height: 100%;
+    object-fit: cover;
+    transition: .6s;
+}
+
+.social-grid div:hover img {
+    transform: scale(1.06);
+}
+
+.instagram-link {
+    display: inline-block;
+    margin-top: 35px;
+    font-size: 11px;
+    letter-spacing: .12em;
+    border-bottom: 1px solid #a96f70;
+    padding-bottom: 8px;
+}
+
+.instagram-link span {
+    margin-left: 15px;
+}
+
+
+/* =========================
+   ORDER
+========================= */
+
+.order {
+    padding: 150px 7%;
+    background: #d5aaa6;
+    text-align: center;
+}
+
+.order-content {
+    max-width: 800px;
+    margin: auto;
+}
+
+.order-content h2 {
+    margin-top: 18px;
+}
+
+.order-content > p {
+    margin: 30px auto;
+    max-width: 450px;
+    color: #624f4b;
+    line-height: 1.8;
+    font-size: 13px;
+}
+
+.order-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 40px;
+}
+
+.order-buttons a {
+    min-width: 180px;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    letter-spacing: .1em;
+}
+
+.order-buttons .whatsapp {
+    background: #302522;
+    color: #fff;
+}
+
+.order-buttons .instagram {
+    border: 1px solid #302522;
+    color: #302522;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #241d1b;
+    color: #fff;
+    padding: 80px 7% 30px;
+}
+
+.footer-main {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 60px;
+    padding-bottom: 70px;
+}
+
+.footer-brand h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 38px;
+    font-weight: 400;
+}
+
+.footer-brand p {
+    margin-top: 8px;
+    font-size: 9px;
+    letter-spacing: .12em;
+    color: #c5aaa5;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-column > span {
+    margin-bottom: 10px;
+    font-size: 8px;
+    letter-spacing: .2em;
+    color: #c79291;
+}
+
+.footer-column a,
+.footer-column p {
+    font-size: 11px;
+    color: rgba(255,255,255,.65);
+}
+
+.footer-column p {
+    line-height: 1.7;
+}
+
+.footer-bottom {
+    padding-top: 25px;
+    border-top: 1px solid rgba(255,255,255,.1);
+    display: flex;
+    justify-content: space-between;
+    font-size: 8px;
+    letter-spacing: .15em;
+    color: rgba(255,255,255,.45);
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1000px) {
+
+    .nav-menu {
+        display: none;
+    }
+
+    .moment-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .moment-image {
+        height: 350px;
+    }
+
+    .moment-info {
+        padding: 20px;
+    }
+
+    .moment-info h3 {
+        font-size: 24px;
+    }
+
+    .intro {
+        grid-template-columns: 60px 1fr;
+    }
+
+    .intro-side {
+        display: none;
+    }
+
+    .product-grid {
+        gap: 45px 18px;
+    }
+
+    .product-photo,
+    .product:nth-child(even) .product-photo {
+        height: 500px;
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .opening-circle {
+        width: 75vw;
+    }
+
+    .navbar {
+        padding: 20px 5%;
+    }
+
+    .brand-main {
+        font-size: 21px;
+    }
+
+    .hero {
+        padding: 120px 7% 80px;
+        min-height: 100svh;
+    }
+
+    .hero h1 {
+        font-size: clamp(48px, 14vw, 75px);
+    }
+
+    .hero-content p {
+        font-size: 13px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hero-label {
+        bottom: 25px;
+    }
+
+    .hero-scroll {
+        display: none;
+    }
+
+    .intro {
+        display: block;
+        padding: 100px 7%;
+    }
+
+    .intro-number {
+        margin-bottom: 30px;
+    }
+
+    .intro h2,
+    .section-head h2,
+    .collection-top h2,
+    .message-inner h2,
+    .story-content h2,
+    .social-title h2,
+    .order-content h2 {
+        font-size: 48px;
+    }
+
+    .moment-section,
+    .collection,
+    .social-section {
+        padding: 100px 5%;
+    }
+
+    .section-head,
+    .collection-top {
+        display: block;
+    }
+
+    .section-head > p,
+    .collection-top > p {
+        width: auto;
+        margin-top: 25px;
+    }
+
+    .moment-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .moment-image {
+        height: 430px;
+    }
+
+    .moment-info {
+        min-height: 140px;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-photo,
+    .product:nth-child(even) .product-photo {
+        height: 480px;
+    }
+
+    .special,
+    .story {
+        grid-template-columns: 1fr;
+    }
+
+    .special-image,
+    .story-image {
+        min-height: 450px;
+    }
+
+    .special-content,
+    .story-content {
+        padding: 80px 7%;
+    }
+
+    .message-section {
+        padding: 100px 5%;
+    }
+
+    .message-card {
+        padding: 22px;
+    }
+
+    .message-text {
+        padding: 55px 5px;
+    }
+
+    .social-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .order {
+        padding: 100px 7%;
+    }
+
+    .order-buttons {
+        flex-direction: column;
+    }
+
+    .order-buttons a {
+        width: 100%;
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px 25px;
+    }
+
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 390px) {
+
+    .opening-circle {
+        width: 82vw;
+    }
+
+    .opening-circle h1 {
+        font-size: 32px;
+    }
+
+    .opening-circle p {
+        font-size: 8px;
+    }
+
+    .hero h1 {
+        font-size: 47px;
+    }
+
+    .product-photo,
+    .product:nth-child(even) .product-photo {
+        height: 400px;
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+}
